@@ -6,7 +6,7 @@ the group and also others
 
 
 
--rw-rw-r--  1 kbaddi kbaddi <bytes> <LMT> <filename> 
+-rw-rw-r--  1 kbaddi kbaddi <bytes> <LMT> <filename>
 
     r       read    - 4
     w       write   - 2
@@ -37,4 +37,3 @@ the group and also others
     `sudo chgrp <newgroup> <filename>`
 
     chmod 640
-

@@ -25,6 +25,8 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 ```
 
+
+
 ## Installation on Centos
 
 ```bash
@@ -45,8 +47,12 @@ sudo yum-config-manager \
 sudo yum-config-manager --enable docker-ce-nightly
 ```
 
+Once the installation is completed please enable and start the docker service
 
-Note: docker-ce is not available in Redhat
+```bash
+sudo systemctl enable docker.service 
+sudo systemctl start docker.service
+```
 
 
 
@@ -55,7 +61,7 @@ Add the existing user to docker group to run docker commands without sudo
 ```bash
 sudo usermod -aG docker ${USER}
 ```
-
+This should be done for both Ubuntu and Centos
 ## Docker commands
 
 ```bash

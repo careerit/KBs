@@ -17,10 +17,10 @@ While, Ansible can be run from any machine including laptops, it is recommended 
 Including Debian, Ubuntu, Mint, Kali etc
 
 ```bash
-sudo apt update
-sudo apt install software-properties-common
+sudo apt update -y
+sudo apt install software-properties-common -y 
 sudo apt-add-repository --yes --update ppa:ansible/ansible
-sudo apt install ansible
+sudo apt install ansible -y
 ```
 
 

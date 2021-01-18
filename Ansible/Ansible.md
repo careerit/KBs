@@ -16,6 +16,8 @@ Any network devices or servers that is managed with Ansible is called as Managed
 An inventory file is a  list of the nodes that are to be managed by Ansible from control node. 
 An inventory is also known as "hostfile"
 
+The default inventory file is located at `/etc/ansible/hosts`
+
 ### Module
 A module is a unit of code that Ansible executes and each module has a particular use.
 User Management to managing VLAN to provisioning infrastructure, there is a module for each of the activities. 
@@ -73,7 +75,23 @@ local
 Playbooks are a set of steps that can be performed in sequence or in parallel.
 Playbooks are written in YAML.
 
+Read more about Yaml syntax here: https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html#yaml-syntax
+
 ### Handlers
+
+
+
+
+
+### Common Modules
+
+- setup
+- shell
+- apt/yum
+- service
+- copy
+- file /template
+- lineinfile
 
 
 

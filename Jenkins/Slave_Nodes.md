@@ -59,8 +59,8 @@ scp agent.jar jenkins@<slave-node-ip>:~/
 
 9. ssh into your slave node and run the above URL 
 
-```
-java -jar agent.jar -jnlpUrl http://master-node-ip:8080/computer/slave-node-ip/slave-agent.jnlp -secret 04288be7d7280b93f0926f338d6b4f02d894bdd6aa94993f36720504d45ccc36 -workDir "/jenkins"
+```bash
+java -jar agent.jar -jnlpUrl http://20.12.1.1:8080/computer/slave-node-ip/slave-agent.jnlp -secret 04288be7d7280b93f0926f338d6b4f02d894bdd6aa94993f36720504d45ccc36 -workDir "/jenkins"
 ```
 
 10. Now your Slave Node is added succesfully. In Jenkins console this node should show as online.

@@ -1,0 +1,128 @@
+* Package Management
+
+A Package is a piece of software that can be installed on an *nix-like Operating system.
+There are various ways to install packages in GNU/Linux distributions. And each family of Linux Operating systems  has a different mechanism for installing and managing pacakges. 
+
+
+| Family   | Backend | Frontend |
+|----------+---------+----------|
+| Debian    | dpkg   | apt      |
+| Redhat    | rpm    | yum      |
+
+
+
+There are three main ways of installing a package:
+
+1. From Software Repositories
+2. Downloading the binary (executable)
+3. Compiling(build) and installing
+
+
+A Software repository or repo for short is a  central storage location where your distribution maintainer keeps list of commonly used software packages.
+Some examples are :
+     - firefox
+     - git
+     - vim
+     - tree
+     - disk utilities
+
+How does my linux os know where to download packages from?
+
+Each distribution has the list of repositories - the locations from where to fetch the packages.
+The information is stored in /etc/ folder.
+
+For Debian family the URLs of the repositories is configured under /etc/apt
+For RedHat family the URLS are configured under /etc/yum folder
+
+
+** APT
+
+Advanced Packaging Tool is the default Pakcage Manager in the Debian Family of distributions. APT simplifies the installation of packages by automating the downloading and installation of a software package.
+The maintainer of the distribution stores a bunch of package in their software repos which apt will retrieve and install on the desired machine.
+
+
+ #+BEGIN_SRC bash
+ sudo apt-get update
+ #+END_SRC
+ Synchronizes the indexes with your distribution
+
+ #+BEGIN_SRC bash
+ sudo apt-get upgrade
+ #+END_SRC
+
+ Upgrades all the installed  packages
+
+`sudo apt-get install <packageName>`
+    Installs <packageName> 
+
+`sudo apt-get remove <packageName>`
+    Removes <packageName> from the system
+
+`sudo apt-get purge <packageName>`
+    Removes <packageName> from the system and also deletes any configuration files
+
+`sudo apt auto-remove`
+  To remove dependencies or packages that are no longer needed.
+
+How to find list of all packages?
+
+`sudo dpkg --list`
+Lists the available packages 
+`sudo dpkg --get-selections`
+gives the list of installed packages
+
+If a package is not available through the repositories, the binary can be downloaded and installed using dpkg command
+
+`sudo dpkg -i <package>`
+
+The packages that are to be installed on Debian family have .deb extension
+very rarely you may see .tar .gz extension
+
+
+Redhat
+
+Redhat family of operating systems uses rpm as the backend and yum as the frontend for package manangent.
+rpm - Redhat Package Manager
+yum - Yellowdog Update Manager.
+
+Installing a package:
+`sudo yum install <packagename>`
+
+
+
+Remove a Package:
+`sudo yum remove <packagename>`
+
+
+rpm is the command to install binaries and list installed packages
+
+`sudo rpm -i <packagename>`
+
+`sudo rpm -qa`
+Lists all the installed packafes
+
+`sudo rpm -q <packagename>`
+Gives details about the <packagename>
+    
+
+    apache2 on Ubunut
+    httpd   on Centos
+    tree 
+
+
+Redhat packages typically have the extension of .rpm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

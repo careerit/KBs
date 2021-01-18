@@ -1,7 +1,6 @@
-# Azure_Storage
+* Azure_Storage
 
-
-## Types of Storage
+** Types of Storage
  
 
 

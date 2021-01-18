@@ -1,0 +1,57 @@
+#+TITLE: SSH Authentication
+#+AUTHOR: Kiran
+#+OPTIONS: H:1
+
+
+
+** Authentication
+
+Authentication is the process of verfying the identity of a person or
+a service which is trying to access a computing resource. It's the process
+of confirming if the person is the one whom he/she claims to be. This
+is typicall acheived with a combination of username and password.
+
+
+
+** Public Key Authentication
+
+While username/password combincation is the most commonly used system
+of authentication, it's not the msot secure way. Moreover, it's not
+always feasible to use username/password combination, particularly
+when computing resources/persons try to connect with another resources
+in a non-interactive way (automation scripts etc). Public Key
+authentication comes to rescue in such scenarios. Public Key
+authentication is the process of using a pair of keys genreated by the
+SSH program
+
+
+*** How it works?
+
+
+'ssh-keygen' generates a pair of keys known as "Public key" and "Private
+key". The "Public key" is updated to the resource to which you want to
+authenticate. Everytime someone tries to authenticate to that
+resource, ssh application  verifies if the person or resource trying to
+access the other resource has the corresponding public key.
+(SSH program is installed by default on all *nix machines, in Windows Open-SSH needs to be installed).
+
+
+Here's how a user: "admin" can authenticate to a server: "vm123"
+
+1. User Generates the keypair (public key and private key) with the
+   "ssh-keygen" command on his machine #
+2. User copies the contents of the public key and pastes to the
+   "authorized_keys" file located in ~/.ssh/ on the server "vm123"
+3. Enable "PubKeyAuthentication" in the "/etc/ssh/sshd_config"
+   file. Restart ssh service with "systemctl restart ssh"
+4. Now the user can login to "vm123" with ssh command. There would be no prompt for password.
+
+
+
+   Notes: 
+   - SSH program is installed by default on all *nix machines, in
+     Windows Open-SSH needs to be installed.
+   - The default location where ssh keypair is stored is "~/.ssh/"
+   - Typically the name of the private key file is "id_rsa" and the public file is "id_rsa.pub"
+  
+ 
