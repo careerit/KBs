@@ -74,7 +74,6 @@ Shift + m -- Sorts the processes by highest Memory utilization
 Fields in the Header
 
 
-
     us: Amount of time the CPU spends executing processes for people in 'user space'
     sy: Amount of time spent running system's kernel space's processes.
     ni: Amount of time spent executing processes with a manually set nice value.
@@ -88,27 +87,63 @@ Fields in main output
 
 
     PID: Shows task's unique process id.
+    USER: User name of owner of task
     PR: Stands for priority of the task.
+    NI: Represents a Nice Value of task. A Negative nice value implies higher priority, and positive Nice value means lower priorityUSER: User name of owner of task.
     SHR: Represents the amount of shared memory used by a task.
-    VIRT: Total virtual memory used by the task.
-    USER: User name of owner of task.
+    VIRT: Total virtual memory used by the task.    
     %CPU: Represents the CPU usage.
     TIME+: CPU Time, the same as TIME, but reflecting more granularity through hundredths of a second.
-    SHR: Represents the Shared Memory size (kb) used by a task.
-    NI: Represents a Nice Value of task. A Negative nice value implies higher priority, and positive Nice value means lower priority.
     %MEM: Shows the Memory usage of task.
 
 
 
 
-You can also kill the program by pressing 'k'
 
-load average : 
-The number of processes waiting for CPU in the last 1 minute, last 5 minutes, and last 15 minutes
+
+## Priority (PR) & Niceness (NI)
+
+Priority and Niceness are related.  While Priority is
+
+PR is the priority level. The lower the PR, the higher the priority of the process will be.
+NI is niceness of the process. The higher the niceness, the process will get lower precedence.
+
+PR value can be computed by the following formula: PR = 20 + NI.
+the process with niceness 3 has the priority 23 (20 + 3) and the process with niceness -7 has the priority 13 (20 - 7). You can check the first by running command nice -n 3 top. It will show that top process has NI 3 and PR 23. But for running nice -n -7 top in most Linux systems you need to have root privileges because actually the lower PR value is the higher actual priority is. Thus the process with PR 13 has higher priority than processes with standard priority PR 20. 
 
 Niceness ranges -20 to 20. Lesser the Niceness higher the priority.
+nice and renice commands are used to update Priority of the user processes. PR of only user processes can be altered with nice and renice commands
+
+nice: A program can be started with a specific niceness with the below command
+
+```bash
+nice -n <nice_value> ./myProgram
+```
+
+Example
+
+```bash
+nice -n 9 ./myscript.sh
+```
+
+renice: Priority of a program can be altered with renice command
+
+```bash
+renice -n <nice_value> <PID>
+```
+
+Example
+
+```bash
+renice -n 9 1344
+```
 
 
+load average : 
+
+Load Average is the measure of the load on the processors. Load Average has three fields each of which is the number of processes waiting for CPU in the last 1 minute, last 5 minutes, and last 15 minutes.
+
+For a Computer with 1 CPU, the load average should always be less than 1 and above 0.9 indicates high utilization of CPU. For a computer with 2 CPUs, the uptime should be under 2 and so on so forth	
 
 
 
