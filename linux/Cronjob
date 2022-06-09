@@ -1,0 +1,9 @@
+# Cronjob
+
+cron job is a task that runs in a certain interval
+
+
+
+MIN HOUR DOM MON DOW CMD
+
+H/30 * * * * /home/ubuntu/task.sh
