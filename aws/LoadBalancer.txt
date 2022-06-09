@@ -1,0 +1,142 @@
+		      ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		       AWS ELASTIC LOAD BALANCER
+
+				 Kiran
+		      ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Table of Contents
+─────────────────
+
+Elastic Load Balancer (ELB)
+.. An overview of Load balancing
+.. Layer 4 vs Layer 7
+.. AWS Elastic Load Balancer
+
+
+
+
+
+Elastic Load Balancer (ELB)
+═══════════════════════════
+
+An overview of Load balancing
+─────────────────────────────
+
+  Load balancing is the process of distributing a set of tasks over a
+  set of resources such as Virtual/Physical Machines or containers, with
+  the aim of making their overall processing more efficient.
+
+  Load balancing can optimize the response time and avoid unevenly
+  overloading some compute nodes while other compute nodes are left
+  idle.
+
+  Load balancers are an important component of creating Highly available
+  and fault tolerant distributed computing systems.
+
+  Load balancers improve the overall performance of applications by
+  decreasing the burden on servers in charge of managing and maintaining
+  [Oapplication and network sessions, and those that perform
+  application-specific tasks.
+
+
+
+  <file:/opt/lab/Tech_Pics/DevOps/LB_Example_Elastic_Cluster.png>
+
+  There are two kinds of Load balancing algorithms:
+
+  • Static Algorithm: Follows a set of predefined rules without taking
+    into consideration the state of the different target/backend
+    machines.
+
+  • Dynamic Algorithm: As the name suggests, dynamic algorithms
+    understand the current state of the target machines and distribute
+    traffic accordingly.
+
+
+
+  Load balancing can be acheived by different set of hardware. Load
+  Balancing can be done by a Physical or Virtual Machine running a
+  reverse-proxy server software such as `Nginx' or `HA-Proxy'. Or this
+  can be done with a dedicated device such as `F5' Load balancer or
+  `Citrix Netscaler'.
+
+
+Layer 4 vs Layer 7
+──────────────────
+
+  Load balancing can happen at layer 4 or layer 7 of the [OSI Model] .
+
+
+[OSI Model] <https://en.wikipedia.org/wiki/OSI_model>
+
+Layer-4 Load Balancing:
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  Layer 4 load balancing operates at the intermediate transport layer,
+  which is responsible for delivering messages regardless of the
+  content.
+
+  Layer 4 load balancers simply forward network packets to and from the
+  upstream server; they cannot look into the the contents of the network
+  packets.
+
+  They can only make limited routing decisions by examining the first
+  few packets in the layer 4 (TCP).
+
+  Layer4 LB is useful in simple packet levle loadbalancing, where
+  advanced routing decisions need not be taken.
+
+  It is faster than Layer 7 load balancer as it can't inspect the
+  contents of the network packets.
+
+
+Layer-7 Load balancing
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+
+  Layer 7 load balancing operates at the high-level application layer,
+  which is responsible for the actual content of the message.
+
+  Layer 7 load balancers route network traffic in a more complex manner,
+  usually applicable to TCP-based traffic like HTTP.
+
+  Unlike Layer 4, a Layer 7 load balancer terminates the network traffic
+  and reads the message within.  It makes a decision based on the
+  content of the message. Afterwhich, it makes a new TCP connection to
+  the selected upstream server and writes the request to the server. It
+  can also cache, layer 4 isn't capable of doing so as it
+
+
+AWS Elastic Load Balancer
+─────────────────────────
+
+Overview:
+╌╌╌╌╌╌╌╌╌
+
+  Elastic Load Balancing automatically distributes incoming application
+  traffic across multiple targets: EC2 instances, containers, IP
+  addresses, Lambda functions, and virtual appliances.
+
+  It can handle the varying load of your application traffic in a single
+  Availability Zone or across multiple Availability Zones.
+
+
+  Elastic Load Balancing offers four types of load balancers that all
+  feature the high availability, automatic scaling, and robust security
+  necessary to make your applications fault tolerant.
+
+
+ALB
+╌╌╌
+
+  LB –> Listener (Port/Protocol) –> Target Groups (ec2, IP, ECS)
+
+  Health check on Target Groups
+
+  Limits 50 listeners per LB
+
+  100 Target Groups per Load Balancer, 3000 Targets in a Target Group
+
+
+Security
+╌╌╌╌╌╌╌╌
